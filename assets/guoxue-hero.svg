@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 900" role="img" aria-labelledby="title desc">
+  <title id="title">国学风掌纹分析主视觉</title>
+  <desc id="desc">宣纸、山水、竹影、朱印和掌纹组成的国学风视觉图</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="47%" cy="35%" r="68%">
+      <stop offset="0" stop-color="#f8efe0"/>
+      <stop offset=".55" stop-color="#e2cfaa"/>
+      <stop offset="1" stop-color="#9a7b51"/>
+    </radialGradient>
+    <linearGradient id="inkWash" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14312f"/>
+      <stop offset=".55" stop-color="#263a31"/>
+      <stop offset="1" stop-color="#0b1715"/>
+    </linearGradient>
+    <linearGradient id="goldLine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f1d18b"/>
+      <stop offset=".5" stop-color="#b88746"/>
+      <stop offset="1" stop-color="#fff1bf"/>
+    </linearGradient>
+    <filter id="paperNoise">
+      <feTurbulence type="fractalNoise" baseFrequency=".95" numOctaves="3" seed="7"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 .13"/>
+      </feComponentTransfer>
+    </filter>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="28" stdDeviation="28" flood-color="#07100f" flood-opacity=".35"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="900" fill="#0b1412"/>
+  <path d="M0 92 C202 12 328 104 490 62 C715 4 910 -34 1280 58 L1280 900 L0 900 Z" fill="url(#inkWash)"/>
+  <path d="M0 578 C170 508 286 556 428 506 C585 450 685 369 863 416 C1014 455 1124 526 1280 492 L1280 900 L0 900 Z" fill="#101e1a" opacity=".82"/>
+  <path d="M0 681 C189 591 377 646 522 577 C704 491 814 518 954 604 C1070 675 1173 691 1280 633 L1280 900 L0 900 Z" fill="#0c1715"/>
+
+  <g opacity=".42">
+    <path d="M84 582 C187 496 267 522 329 444 C397 358 459 331 546 358 C440 453 332 551 224 652 Z" fill="#355b4e"/>
+    <path d="M672 512 C770 411 842 417 923 330 C1002 245 1081 238 1193 303 C1079 415 960 527 819 654 Z" fill="#28493f"/>
+  </g>
+
+  <g stroke="#d7be83" stroke-width="2" opacity=".32" fill="none">
+    <path d="M129 173 C245 217 345 188 448 232 S674 280 806 226 S1068 174 1182 238"/>
+    <path d="M85 232 C247 276 372 238 522 285 S810 331 963 270 S1134 252 1242 309"/>
+    <path d="M45 750 C242 704 413 759 592 721 S943 653 1238 742"/>
+  </g>
+
+  <g transform="translate(318 112)" filter="url(#softShadow)">
+    <circle cx="330" cy="330" r="310" fill="url(#paperGlow)"/>
+    <circle cx="330" cy="330" r="293" fill="none" stroke="#8b643d" stroke-width="2" opacity=".55"/>
+    <circle cx="330" cy="330" r="252" fill="none" stroke="#16332d" stroke-width="1.3" opacity=".45"/>
+    <circle cx="330" cy="330" r="310" filter="url(#paperNoise)"/>
+    <g stroke="#172d28" stroke-linecap="round" fill="none" opacity=".72">
+      <path d="M265 563 C246 486 230 410 232 327 C235 213 267 135 324 110 C382 85 427 132 427 213 C427 259 410 299 413 345 C417 413 462 460 514 497" stroke-width="9"/>
+      <path d="M196 392 C267 350 318 349 376 388 C425 421 461 416 528 388" stroke-width="5"/>
+      <path d="M218 276 C284 252 336 261 384 303 C426 340 463 348 526 327" stroke-width="5"/>
+      <path d="M263 468 C319 435 377 443 437 489" stroke-width="4"/>
+      <path d="M297 167 C310 242 310 309 292 375 C279 421 269 473 287 537" stroke-width="4"/>
+      <path d="M379 143 C365 222 365 301 393 377 C412 430 425 476 414 528" stroke-width="4"/>
+      <path d="M244 218 C216 252 204 296 209 343" stroke-width="3"/>
+      <path d="M456 232 C485 270 500 309 497 353" stroke-width="3"/>
+    </g>
+    <g transform="translate(456 456) rotate(-8)">
+      <rect x="0" y="0" width="104" height="104" rx="6" fill="#9e2f25" opacity=".94"/>
+      <rect x="12" y="12" width="80" height="80" rx="2" fill="none" stroke="#f3d7b4" stroke-width="4" opacity=".72"/>
+      <path d="M31 35 L73 35 M31 52 L73 52 M31 69 L73 69 M52 29 L52 76" stroke="#f3d7b4" stroke-width="4" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <g stroke="url(#goldLine)" stroke-linecap="round" opacity=".78">
+    <path d="M180 90 C198 214 180 308 215 431 C238 512 237 604 206 732" stroke-width="4"/>
+    <path d="M230 120 C220 257 246 386 286 498 C312 571 305 664 271 782" stroke-width="3"/>
+    <path d="M1072 116 C1047 236 1069 345 1040 459 C1015 556 1028 672 1074 795" stroke-width="4"/>
+    <path d="M1126 158 C1094 267 1122 374 1096 476 C1070 583 1107 682 1156 782" stroke-width="3"/>
+  </g>
+
+  <g fill="#d9bd79" opacity=".65">
+    <circle cx="190" cy="104" r="5"/>
+    <circle cx="214" cy="165" r="4"/>
+    <circle cx="1090" cy="104" r="5"/>
+    <circle cx="1118" cy="184" r="4"/>
+    <circle cx="1056" cy="244" r="3"/>
+  </g>
+</svg>

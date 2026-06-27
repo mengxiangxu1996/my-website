@@ -1,0 +1,150 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#1a130e" />
+    <title>手相 AI 测试台</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">玺</div>
+          <div>
+            <div class="brand-name">手相 AI 测试台</div>
+            <div class="brand-sub">国学风手相报告生成器</div>
+          </div>
+        </div>
+        <div class="status-pill" id="apiStatus">检测中</div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="hero-kicker">观纹理，察气色，知趋向</div>
+          <h1>把手相解析，做成一张更像国学海报的主视觉</h1>
+          <p>
+            上传手相照片后，系统会生成带纸张纹理、卷轴感和左右分栏的分析海报，
+            并在完成后自动弹出大图预览。
+          </p>
+          <div class="hero-actions">
+            <a class="primary-link" href="#workbench">开始体验</a>
+            <span class="hero-note">支持上传手相图，并自动打开报告预览</span>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img src="assets/guoxue-hero.png" alt="国学风手相分析主图" />
+        </div>
+      </section>
+
+      <main class="grid" id="workbench">
+        <section class="panel">
+          <div class="panel-head">
+            <div class="step">Step 01</div>
+            <h2>上传手相照片</h2>
+          </div>
+          <label class="upload-box" id="dropzone">
+            <input id="photoInput" type="file" accept="image/*" capture="environment" />
+            <img id="photoPreview" alt="手相照片预览" />
+            <div class="upload-copy" id="uploadCopy">
+              <strong>点击上传或拖拽图片</strong>
+              <span>支持 JPG / PNG / WebP</span>
+            </div>
+          </label>
+
+          <div class="field-row">
+            <label class="field">
+              <span>性别</span>
+              <select id="gender">
+                <option>男</option>
+                <option>女</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>年龄</span>
+              <input id="age" type="number" min="1" max="120" value="32" />
+            </label>
+          </div>
+
+          <label class="field">
+            <span>关注方向</span>
+            <select id="focus">
+              <option>事业</option>
+              <option>感情</option>
+              <option>财运</option>
+              <option>健康</option>
+              <option>综合</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div class="step">Step 02</div>
+            <h2>生成问题</h2>
+          </div>
+          <div class="chat-log" id="chatLog">
+            <div class="bubble assistant">你好，上传手相照片后，我会按国学风格生成结构化报告。</div>
+          </div>
+          <textarea id="prompt" rows="6" placeholder="例如：请结合手相照片，分析我的事业、感情、财运和未来三个月的建议。"></textarea>
+          <div class="toolbar">
+            <label class="toggle">
+              <input id="mockMode" type="checkbox" checked />
+              <span>模拟生成</span>
+            </label>
+            <button id="sendBtn" class="primary-btn" type="button">生成报告</button>
+          </div>
+          <div class="progress-wrap" id="progressWrap" hidden>
+            <div class="progress-title" id="progressText">正在生成</div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel panel-report">
+          <div class="panel-head">
+            <div class="step">Step 03</div>
+            <h2>图片报告预览</h2>
+          </div>
+          <div class="report-card" id="reportCard">
+            <div class="report-watermark">玺</div>
+            <div class="report-top">
+              <div>
+                <div class="report-title">手相分析报告</div>
+                <div class="report-sub" id="reportMeta">等待生成</div>
+              </div>
+              <div class="report-seal">国学</div>
+            </div>
+            <div class="report-body" id="reportBody">
+              <div class="report-empty">生成后，这里会以图片化版式展示结果。</div>
+            </div>
+          </div>
+          <div class="action-row">
+            <button id="downloadBtn" class="secondary-btn" type="button">下载图片</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="preview-modal" id="previewModal" hidden>
+      <div class="preview-sheet">
+        <div class="preview-bar">
+          <div class="preview-copy">
+            <h3 id="previewTitle">手相分析报告</h3>
+            <p id="previewMeta">大图预览</p>
+          </div>
+          <div class="preview-actions">
+            <button id="previewDownload" class="secondary-btn" type="button">下载</button>
+            <button id="previewClose" class="primary-btn" type="button">关闭</button>
+          </div>
+        </div>
+        <img id="previewCanvas" class="preview-image" alt="报告大图预览" />
+      </div>
+    </div>
+
+    <script src="assets/app.js"></script>
+  </body>
+</html>
+
