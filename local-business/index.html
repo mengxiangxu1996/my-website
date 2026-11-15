@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fbfcf9">
+  <meta name="description" content="为本地商家打造的短视频灵感、文案和视频制作工作台。">
+  <title>巷里好生意 · 本地内容工作台</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script defer src="./app.js"></script>
+  <script defer src="./video-case.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="主导航">
+      <a class="brand" href="#discover" aria-label="巷里好生意首页" data-nav="discover">
+        <span class="brand-mark"><i data-lucide="orbit"></i></span>
+        <span class="brand-copy"><strong>巷里好生意</strong><small>LOCAL CONTENT STUDIO</small></span>
+      </a>
+
+      <div class="nav-label">工作台</div>
+      <nav class="primary-nav">
+        <button class="nav-link active" data-nav="studio"><i data-lucide="clapperboard"></i><span>一键做视频</span><span class="nav-dot"></span></button>
+        <button class="nav-link" data-nav="discover"><i data-lucide="compass"></i><span>案例参考</span></button>
+        <button class="nav-link" data-nav="copy"><i data-lucide="settings-2"></i><span>文案设置</span></button>
+        <button class="nav-link" data-nav="library"><i data-lucide="images"></i><span>我的素材</span><span class="nav-number" id="assetNavCount">0</span></button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="shop-card">
+          <span class="shop-avatar"><i data-lucide="croissant"></i></span>
+          <span class="shop-details"><strong id="sidebarShopName">设置你的店铺</strong><small id="sidebarShopMeta">完善资料后开始制作</small></span>
+          <button class="icon-button shop-edit" data-action="edit-shop" aria-label="编辑店铺资料" title="编辑店铺资料"><i data-lucide="pencil"></i></button>
+        </div>
+        <div class="sidebar-foot"><span class="status-dot"></span> 今天也适合发内容</div>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <div class="crumbs"><span>本地生意</span><i data-lucide="chevron-right"></i><strong id="breadcrumbTitle">找灵感</strong></div>
+        <div class="topbar-actions">
+          <button class="top-shop-button" data-action="edit-shop"><span class="shop-avatar tiny"><i data-lucide="store"></i></span><span id="topShopName">设置你的店铺</span><i data-lucide="chevron-down"></i></button>
+          <span class="topbar-divider"></span>
+          <button class="icon-button help-button" data-action="help" aria-label="帮助与反馈" title="帮助与反馈"><i data-lucide="circle-help"></i></button>
+          <span class="user-avatar">张</span>
+        </div>
+      </header>
+
+      <aside class="hosting-notice hidden" id="staticHostingNotice" role="status">静态演示站：可以浏览界面和案例；AI 文案、视频解析与真实动态生成需要后端服务。</aside>
+      <main id="mainContent">
+        <section class="view" id="view-discover" data-view="discover">
+          <div class="page-heading discover-heading">
+            <div><div class="eyebrow"><span class="eyebrow-spark"><i data-lucide="sparkles"></i></span> 周六 · 本地生活</div><h1>今天，发点好内容。</h1><p class="page-subtitle">把别人的灵感，变成你的生意。</p></div>
+            <button class="button button-dark heading-cta" data-nav="studio"><i data-lucide="plus"></i> 开始拍视频</button>
+          </div>
+
+          <div class="trend-strip">
+            <div class="trend-icon"><i data-lucide="trending-up"></i></div>
+            <div class="trend-copy"><span class="trend-label">店铺内容灵感 · 示例</span><strong>真实展示商品、过程、门店环境</strong></div>
+            <span class="trend-note">不代表实时热度</span>
+            <button class="trend-action" data-action="trend-script">用这些词写一条 <i data-lucide="arrow-up-right"></i></button>
+          </div>
+
+          <div class="section-heading case-tools-heading"><div><div class="section-kicker">LOCAL · INSPO</div><h2>找一条，拍出自己的味道</h2></div><button class="text-button" data-action="show-all">浏览全部案例 <i data-lucide="arrow-right"></i></button></div>
+          <div class="filter-bar">
+            <label class="search-field"><i data-lucide="search"></i><input id="caseSearch" type="search" placeholder="搜行业、商品或拍摄风格" autocomplete="off" aria-label="搜索视频案例"><kbd>⌘ K</kbd></label>
+            <div class="filter-divider"></div>
+            <div class="platform-switch" role="group" aria-label="筛选平台"><button class="platform-chip active" data-platform="全部">全部</button><button class="platform-chip" data-platform="抖音"><span class="platform-marker marker-dark"></span>抖音</button><button class="platform-chip" data-platform="小红书"><span class="platform-marker marker-coral"></span>小红书</button><button class="platform-chip" data-platform="视频号"><span class="platform-marker marker-green"></span>视频号</button></div>
+          </div>
+          <div class="industry-filter" id="industryFilter" role="group" aria-label="按行业筛选">
+            <button class="industry-chip active" data-industry="全部">全部行业</button><button class="industry-chip" data-industry="美食饮品">美食饮品</button><button class="industry-chip" data-industry="美业丽人">美业丽人</button><button class="industry-chip" data-industry="宠物">宠物</button><button class="industry-chip" data-industry="生活服务">生活服务</button><button class="industry-chip" data-industry="家居零售">家居零售</button>
+          </div>
+
+          <section class="panel real-case-panel" aria-labelledby="realCaseTitle">
+            <div class="panel-header"><div><span class="section-kicker">YOUR VIDEO / 真实案例</span><h2 id="realCaseTitle">放一条视频，拆出你的拍法</h2></div><label class="button button-dark" for="caseVideoInput">导入视频<input id="caseVideoInput" type="file" accept="video/*" hidden></label></div>
+            <p class="page-subtitle">粘贴分享文案或链接，不用自己下载。仅分析你有权使用的视频，支持 2 分钟内的浏览器可播放素材。</p>
+            <form id="caseLinkForm" class="case-link-form">
+              <label class="field-label" for="caseLinkInput">抖音 / 小红书 / 视频号分享链接<textarea id="caseLinkInput" class="text-input" maxlength="4000" rows="3" placeholder="把复制的分享文案和链接一起粘贴到这里…" required></textarea></label>
+              <button class="button button-dark" id="importCaseLink" type="submit">解析并导入链接</button>
+            </form>
+            <p class="page-subtitle">解析时将链接发送到 TikHub，按接口计费，失败或内容受限也可能计费。链接视频上限 90 MB；视频号当前仅查询详情，暂不支持加密视频播放与分析。</p>
+            <p id="caseLinkStatus" class="page-subtitle" role="status"></p>
+            <a id="caseSourceLink" class="hidden" target="_blank" rel="noopener noreferrer">查看原作品 ↗</a>
+            <div id="realCaseWorkspace" class="real-case-workspace hidden">
+              <div><video id="realCaseVideo" controls playsinline preload="metadata" aria-label="真实案例视频播放器"></video><p id="realCaseFile" class="page-subtitle"></p><p class="page-subtitle">素材保留在本次页面会话中，刷新后需重新选择。</p></div>
+              <div><label class="field-label">口播原文或字幕（选填）<textarea id="caseTranscript" class="text-input" maxlength="2000" rows="4" placeholder="粘贴真实口播，帮助分析话术。暂不自动转写声音。"></textarea></label>
+                <p class="page-subtitle">点击分析后，6 张关键帧和填写的字幕将发送到百炼，按用量计费；结果仅覆盖抽样画面。</p>
+                <button class="button button-lime" id="analyzeCase">分析关键画面</button>
+                <p id="caseAnalysisStatus" class="page-subtitle" role="status"></p>
+              </div>
+            </div>
+            <div id="caseFrameStrip" class="case-frame-strip"></div><div id="realCaseAnalysis" aria-live="polite"></div>
+          </section>
+          <div class="case-section-heading"><div class="case-heading-left"><span class="live-indicator"></span><h3>行业灵感示例</h3><span class="fresh-count">精选 12 条</span></div><button class="sort-button" data-action="sort-cases"><i data-lucide="arrow-down-wide-narrow"></i><span>本周热度</span><i data-lucide="chevron-down"></i></button></div>
+          <p class="page-subtitle sample-label">下方案例为静态演示，点击查看结构示例；播放量与时长为模拟数据。</p>
+          <div class="case-grid" id="caseGrid" aria-live="polite"></div>
+        </section>
+
+        <section class="view" id="view-copy" data-view="copy">
+          <div class="page-heading compact-heading"><div><div class="eyebrow"><span class="eyebrow-spark"><i data-lucide="wand-sparkles"></i></span> AI 文案搭子</div><h1>把你的好生意，说给附近的人听。</h1><p class="page-subtitle">先讲讲你的店，文案就从你的真实特色开始。</p></div></div>
+          <div class="copy-layout">
+            <div class="panel copy-form-panel">
+              <div class="panel-header"><div><span class="section-kicker">01 / 先选内容</span><h2>这次想发什么？</h2></div><span class="ai-badge"><i data-lucide="sparkles"></i> 灵感生成</span></div>
+              <div class="content-type-row" role="group" aria-label="内容类型"><button class="content-type active" data-content-type="口播短视频"><i data-lucide="mic-2"></i><span>口播短视频</span></button><button class="content-type" data-content-type="探店脚本"><i data-lucide="map-pin"></i><span>探店脚本</span></button><button class="content-type" data-content-type="直播开场"><i data-lucide="radio"></i><span>直播开场</span></button><button class="content-type" data-content-type="种草笔记"><i data-lucide="notebook-tabs"></i><span>种草笔记</span></button></div>
+              <div class="form-grid">
+                <label class="field-label">店铺名称<input class="text-input" id="shopInput" maxlength="40" readonly placeholder="先填写店铺档案"></label>
+                <label class="field-label">主推商品 / 服务<input class="text-input" id="productInput" maxlength="100" readonly placeholder="先填写店铺档案"></label>
+                <label class="field-label field-wide">已确认的真实卖点<div class="input-with-count"><input class="text-input" id="sellingInput" maxlength="300" readonly placeholder="先填写店铺档案"><span class="input-count" id="sellingCount">0/300</span></div></label>
+                <label class="field-label">主要顾客<input class="text-input" id="audienceInput" maxlength="100" readonly placeholder="先填写店铺档案"></label>
+                <label class="field-label">发在哪个平台<select class="text-input" id="copyPlatform"><option>抖音</option><option>小红书</option><option>视频号</option></select></label>
+              </div>
+              <div class="tone-label">这次想要的感觉</div>
+              <div class="tone-row" role="group" aria-label="选择文案语气"><button class="tone-chip active" data-tone="亲切像街坊">亲切像街坊</button><button class="tone-chip" data-tone="轻松有梗">轻松有梗</button><button class="tone-chip" data-tone="真诚讲品质">真诚讲品质</button><button class="tone-chip" data-tone="制造好奇">制造好奇</button></div>
+              <div class="form-actions"><span class="demo-note"><i data-lucide="info"></i> 点击生成将调用百炼，按用量计费</span><button class="button button-dark" id="generateCopy"><i data-lucide="sparkles"></i> 生成文案</button></div>
+            </div>
+            <div class="panel output-panel">
+              <div class="output-header"><div><span class="section-kicker">02 / 挑一条灵感</span><h2>给你 3 个不同开场</h2></div><button class="icon-button" data-action="refresh-copy" aria-label="重新生成" title="重新生成"><i data-lucide="refresh-cw"></i></button></div>
+              <p id="copyStatus" class="page-subtitle" role="status">下方为示例文案，填写店铺信息后点击生成。</p>
+              <div id="copyReference" class="hidden"><p class="page-subtitle" id="copyReferenceText"></p><button class="text-button" id="clearCopyReference">移除案例参考</button></div>
+              <div id="copyResults" class="copy-results"></div>
+              <div class="results-footer"><span><i data-lucide="heart"></i> 点赞收藏，灵感不走丢</span><span>适合直接改成你的语气</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view active" id="view-studio" data-view="studio">
+          <div class="page-heading studio-page-heading"><div><div class="eyebrow"><span class="eyebrow-spark mint"><i data-lucide="clapperboard"></i></span> AI 短视频制作</div><h1>上传店铺素材，生成一条吸引人的视频。</h1><p class="page-subtitle">AI 先为你设计前三秒开场，再自动编排店内照片与视频。</p></div><button class="text-button back-to-cases" data-nav="discover"><i data-lucide="sparkles"></i> 看参考案例</button></div>
+          <div class="studio-layout">
+            <div class="panel studio-input-panel">
+              <section class="store-profile-card" id="storeProfileCard" aria-live="polite">
+                <div><span class="section-kicker">先让 AI 认识你的店</span><strong id="storeProfileSummary">填写店铺资料，开场与内容才会基于真实经营信息</strong><small id="storeProfileFacts">行业、主推商品、真实卖点和顾客</small></div>
+                <button class="button button-outline" id="openStoreProfile" type="button"><i data-lucide="store"></i><span>填写店铺资料</span></button>
+              </section>
+              <div class="panel-header"><div><span class="section-kicker">STEP 01 / 上传素材</span><h2>先把店里的好画面交给我</h2></div><span class="asset-count" id="studioAssetCount">0 段素材</span></div>
+              <label class="upload-zone" id="uploadZone" for="mediaInput"><input id="mediaInput" type="file" accept="image/*,video/*" multiple hidden><span class="upload-icon"><i data-lucide="upload"></i></span><span class="upload-title">添加商品、门店或制作过程素材</span><span class="upload-caption">照片和视频都可以 · 每条视频最多 3 个素材</span><span class="button button-outline upload-button"><i data-lucide="plus"></i> 选择店铺素材</span></label>
+              <div class="asset-strip" id="studioAssets" aria-live="polite"></div>
+
+              <div class="studio-divider"></div>
+              <div class="panel-header setup-heading"><div><span class="section-kicker">STEP 02 / 设计前三秒钩子</span><h2>第一眼，先给顾客一个停下来的理由</h2></div><button class="text-button" data-action="studio-hook"><i data-lucide="shuffle"></i> 换个开场</button></div>
+              <div class="hook-choices empty-hook-choices" id="hookChoices" role="group" aria-label="前三秒开场钩子"><span id="hookEmptyState">完成店铺资料并上传素材后，AI 会结合商品事实与画面设计开场</span></div>
+              <details class="advanced-video-settings"><summary><i data-lucide="sliders-horizontal"></i> 调整视频内容</summary><div class="video-settings-fields"><label class="field-label">视频主题<input class="text-input" id="videoTitleInput" maxlength="32" value="附近这家店，值得来看看"></label><label class="field-label">结尾字幕<input class="text-input" id="videoEndingInput" maxlength="32" value="欢迎来店里坐坐"></label><div class="structure-selector" role="group" aria-label="选择视频风格"><button class="structure-choice active" data-structure="探店种草"><strong>产品亮点</strong></button><button class="structure-choice" data-structure="新品上新"><strong>新品上新</strong></button><button class="structure-choice" data-structure="门店日常"><strong>门店日常</strong></button></div></div></details>
+              <p id="hookDesignStatus" class="page-subtitle" role="status">先设计并选择前三秒开场，再生成真实动态视频。</p>
+              <div class="render-notice"><i data-lucide="sparkles"></i><span>设计开场会调用 Qwen 并按量计费。选定开场后点击生成才会调用 Wan 和 CosyVoice：480P 约 ¥0.50/段，最多 3 段、15 秒；按当前原价总计预计约 ¥1.60，价格以百炼账单为准。店铺资料、素材画面会发送至百炼，不自动重试。</span><button class="icon-button" aria-label="视频如何生成" title="视频如何生成" data-action="help"><i data-lucide="circle-help"></i></button></div>
+              <button class="button button-lime render-button" id="renderVideo"><i data-lucide="wand-sparkles"></i> 设计前三秒开场</button>
+              <div class="render-progress hidden" id="renderProgress"><span class="progress-bar"><span id="progressFill"></span></span><span id="progressLabel">准备片段...</span></div>
+            </div>
+            <div class="panel preview-panel"><div class="preview-top"><div><span class="section-kicker">VIDEO / 9:16</span><h2>你的成片</h2></div><span class="preview-indicator"><span></span> 竖屏</span></div>
+              <div class="video-frame"><canvas id="renderCanvas" width="720" height="1280" aria-label="竖屏视频合成画布"></canvas><video id="resultVideo" controls playsinline class="hidden" aria-label="生成的视频预览"></video><div class="canvas-watermark"><span class="mini-brand-mark"><i data-lucide="orbit"></i></span> 巷里好生意 <span>·</span> DEMO</div></div>
+              <div class="preview-caption" id="previewCaption"><span class="caption-mark"><i data-lucide="zap"></i></span><div><strong id="previewHookTitle">前三秒开场钩子</strong><small>真实店铺素材 · 自动编排 · 到店邀请</small></div></div>
+              <div class="preview-actions"><a class="button button-outline download-button hidden" id="downloadVideo" href="#" download="xiangli-local-video.webm"><i data-lucide="download"></i> 下载视频</a><button class="button button-outline hidden" id="remakeVideo"><i data-lucide="refresh-cw"></i> 换钩子重做</button></div>
+              <span class="export-note" id="exportNote">选择开场后生成真实动态、AI 配音和字幕</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-library" data-view="library">
+          <div class="page-heading library-heading"><div><div class="eyebrow"><span class="eyebrow-spark blue"><i data-lucide="images"></i></span> 素材都在这里</div><h1>你的店铺素材库。</h1><p class="page-subtitle">这些照片和视频保留在当前页面会话里，不会上传。</p></div><label class="button button-dark library-add" for="libraryMediaInput"><i data-lucide="plus"></i> 添加素材<input id="libraryMediaInput" type="file" accept="image/*,video/*" multiple hidden></label></div>
+          <div class="library-toolbar"><div class="library-stats"><span class="stat-ring"><i data-lucide="layers-2"></i></span><span><strong id="libraryAssetCount">0 段素材</strong><small>本机素材</small></span></div><div class="library-filters" role="group"><button class="library-filter active" data-library-filter="全部">全部</button><button class="library-filter" data-library-filter="照片">照片</button><button class="library-filter" data-library-filter="视频">视频</button></div></div>
+          <div id="libraryGrid" class="library-grid" aria-live="polite"><div class="empty-state"><span class="empty-icon"><i data-lucide="images"></i></span><strong>你的好素材，从这里开始</strong><span>上传几张产品、店面或制作过程的照片</span><label class="button button-outline" for="libraryMediaInput"><i data-lucide="upload"></i> 选择本地素材</label></div></div>
+          <div class="library-bottom"><span class="privacy-lock"><i data-lucide="lock-keyhole"></i> 本机保存 · 关闭页面后清空</span><button class="button button-light" data-nav="studio"><i data-lucide="clapperboard"></i> 用这些素材做视频</button></div>
+        </section>
+      </main>
+      <footer class="desktop-footer"><span>一门好生意，值得被更多人看见。</span><span>DEMO · 本地商家短视频工作台</span></footer>
+    </div>
+  </div>
+
+  <nav class="mobile-nav" aria-label="移动端主导航"><button class="mobile-nav-link active" data-nav="studio"><i data-lucide="clapperboard"></i><span>做视频</span></button><button class="mobile-nav-link" data-nav="discover"><i data-lucide="compass"></i><span>案例</span></button><button class="mobile-nav-link" data-nav="library"><i data-lucide="images"></i><span>素材</span></button><button class="mobile-nav-link" data-nav="copy"><i data-lucide="settings-2"></i><span>设置</span></button></nav>
+
+  <div class="modal-backdrop hidden" id="caseModal" role="presentation"><section class="case-dialog" role="dialog" aria-modal="true" aria-labelledby="caseDialogTitle"><button class="icon-button dialog-close" data-action="close-case" aria-label="关闭案例"><i data-lucide="x"></i></button><div id="caseDialogContent"></div></section></div>
+  <div class="toast" id="toast" aria-live="polite"></div>
+  <dialog class="shop-dialog" id="shopDialog"><form method="dialog" class="shop-dialog-inner" id="storeProfileForm"><button class="icon-button shop-dialog-close" value="cancel" aria-label="关闭"><i data-lucide="x"></i></button><span class="dialog-kicker">STORE PROFILE / 店铺档案</span><h2>先告诉我店里真实的情况。</h2><p>必填信息用于准确写开场；不清楚的价格和卖点可以先留空。</p><div class="profile-form-grid">
+    <label class="field-label">店铺名称<input class="text-input" id="profileShopInput" maxlength="40" placeholder="例如：阿强修鞋铺" required></label>
+    <label class="field-label">所属行业<select class="text-input" id="profileIndustry" required><option value="">请选择行业</option><option>餐饮美食</option><option>咖啡茶饮</option><option>美容美发</option><option>宠物服务</option><option>生活服务</option><option>家居零售</option><option>运动健身</option><option>休闲娱乐</option><option>教育培训</option><option>其他本地服务</option></select></label>
+    <label class="field-label">所在城市<input class="text-input" id="profileCityInput" maxlength="30" placeholder="例如：杭州" required></label>
+    <label class="field-label">门店地址 / 商圈（选填）<input class="text-input" id="profileAddressInput" maxlength="80" placeholder="例如：滨江区星光大道附近"></label>
+    <label class="field-label field-wide">主推商品或服务<input class="text-input" id="profileProductInput" maxlength="100" placeholder="例如：手工修鞋、换底和皮具护理" required></label>
+    <label class="field-label field-wide">价格或套餐（选填）<input class="text-input" id="profilePriceInput" maxlength="100" placeholder="仅填写确认有效的价格，如 99 元双人套餐"></label>
+    <label class="field-label field-wide">真实卖点 / 你和别家不同的地方<textarea class="text-input profile-textarea" id="profileSellingInput" maxlength="300" rows="3" placeholder="请写你确认属实的内容，例如营业年限、服务流程、使用材料；不确定可留空"></textarea></label>
+    <label class="field-label field-wide">主要服务哪些顾客<input class="text-input" id="profileAudienceInput" maxlength="100" placeholder="例如：附近社区居民和上班族" required></label>
+    <label class="field-label field-wide">希望顾客下一步做什么（选填）<input class="text-input" id="profileCtaInput" maxlength="100" placeholder="例如：到店体验、电话预约"></label>
+  </div><p class="profile-privacy-note">资料仅保存在本机浏览器。生成开场时，店铺资料和最多 3 张素材画面会发送至百炼 AI，用于生成内容。</p><menu class="dialog-menu"><button class="button button-outline" type="button" id="cancelStoreProfile">取消</button><button class="button button-dark" type="button" id="saveStoreProfile">保存店铺资料</button></menu></form></dialog>
+</body>
+</html>
