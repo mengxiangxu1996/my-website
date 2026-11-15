@@ -252,6 +252,12 @@ kbd { padding: 3px 5px; border: 1px solid #e7ebe6; border-radius: 4px; color: #a
 .back-to-cases { flex: 0 0 auto; }
 .studio-layout { display: grid; grid-template-columns: minmax(0, 1.28fr) minmax(280px, .72fr); align-items: start; gap: 15px; }
 .studio-input-panel { padding: 18px; }
+.store-profile-card { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 18px; padding: 12px 13px; border: 1px solid #e7ebe5; border-radius: 6px; background: #fbfcf9; }
+.store-profile-card > div { display: grid; min-width: 0; flex: 1 1 auto; gap: 5px; }
+.store-profile-card .section-kicker { color: #78866f; font-size: 8px; }
+.store-profile-card strong { color: #354139; font-size: 11px; line-height: 1.5; overflow-wrap: anywhere; }
+.store-profile-card small { color: #8b968e; font-size: 9px; line-height: 1.5; }
+.store-profile-card > .button { flex: 0 0 auto; }
 .asset-count { color: #97a199; font-size: 9px; white-space: nowrap; }
 .upload-zone { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 153px; margin-top: 14px; padding: 16px; border: 1px dashed #ced9c8; border-radius: 7px; background: #fbfcf9; cursor: pointer; transition: background .16s, border .16s; }
 .upload-zone:hover, .upload-zone.dragging { border-color: #8faa83; background: #f6f9ef; }
@@ -533,6 +539,8 @@ kbd { padding: 3px 5px; border: 1px solid #e7ebe6; border-radius: 4px; color: #a
   .back-to-cases { margin: 0 0 -2px; font-size: 9px; }
   .studio-layout { grid-template-columns: minmax(0,1fr); gap: 12px; }
   .studio-input-panel, .preview-panel { padding: 13px; }
+  .store-profile-card { align-items: flex-start; flex-direction: column; gap: 9px; margin-bottom: 14px; padding: 10px; }
+  .store-profile-card > .button { width: 100%; justify-content: center; }
   .upload-zone { min-height: 138px; }
   .structure-choice { min-height: 47px; }
   .studio-text-fields { gap: 7px; }
